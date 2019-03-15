@@ -17,7 +17,7 @@
 #include "cam_fd_context.h"
 #include "cam_trace.h"
 
-static const char fd_dev_name[] = "fd";
+static const char fd_dev_name[] = "cam-fd";
 
 /* Functions in Available state */
 static int __cam_fd_ctx_acquire_dev_in_available(struct cam_context *ctx,

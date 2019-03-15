@@ -16,7 +16,7 @@
 #include "cam_debug_util.h"
 #include "cam_lrme_context.h"
 
-static const char lrme_dev_name[] = "lrme";
+static const char lrme_dev_name[] = "cam-lrme";
 
 static int __cam_lrme_ctx_acquire_dev_in_available(struct cam_context *ctx,
 	struct cam_acquire_dev_cmd *cmd)
