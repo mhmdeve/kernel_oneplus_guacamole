@@ -12,4 +12,8 @@ config NXP_NFC_PN8XT
 	  You'll have to say Y if your computer contains an pn8xt I2C device that
 	  you want to use under Linux.
 
+<<<<<<< HEAD
 	  You can say N here if you don't have any pn8xt I2C connected to your computer.
+=======
+	  You can say N here if you don't have any pn8xt I2C connected to your computer.
+>>>>>>> a62deebe8637 (treewide: add cleaned-up vendor drivers)

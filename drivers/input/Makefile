@@ -24,8 +24,13 @@ obj-$(CONFIG_INPUT_MOUSE)	+= mouse/
 obj-$(CONFIG_INPUT_JOYSTICK)	+= joystick/
 obj-$(CONFIG_INPUT_TABLET)	+= tablet/
 obj-$(CONFIG_INPUT_TOUCHSCREEN)	+= touchscreen/
+<<<<<<< HEAD
 obj-$(CONFIG_TOUCHPANEL_ONEPLUS)        += oneplus_touchscreen/
 obj-$(CONFIG_INPUT_FINGERPRINT) += fingerprint/
+=======
+obj-$(CONFIG_TOUCHPANEL_ONEPLUS)	+= oneplus_touchscreen/
+obj-$(CONFIG_INPUT_FINGERPRINT) 	+= fingerprint/
+>>>>>>> a62deebe8637 (treewide: add cleaned-up vendor drivers)
 obj-$(CONFIG_INPUT_MISC)	+= misc/
 
 obj-$(CONFIG_INPUT_APMPOWER)	+= apm-power.o

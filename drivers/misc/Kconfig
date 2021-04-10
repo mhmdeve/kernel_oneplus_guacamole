@@ -595,6 +595,7 @@ config TEST_IRQ_REQUESTER
 
 	  If in doubt, say N.
 
+<<<<<<< HEAD
 config BOOTLOADER_LOG
 	tristate "show bootloader log"
 	depends on OF
@@ -602,6 +603,8 @@ config BOOTLOADER_LOG
 	help
 	  show bootloader log in kernel
 
+=======
+>>>>>>> a62deebe8637 (treewide: add cleaned-up vendor drivers)
 config AUDIO_SENSOR
 	tristate "support sensor notify audio to control ultrasound"
 	default y

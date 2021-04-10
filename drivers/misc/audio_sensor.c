@@ -1,4 +1,3 @@
-
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/err.h>
@@ -103,7 +102,6 @@ static unsigned int audio_poll(struct file *file,
 	pr_info("%s: exit mask is %#x\n", __func__, mask);
 	return mask;
 }
-
 
 static int audio_close(struct inode *inode, struct file *file)
 {
@@ -281,8 +279,6 @@ static struct miscdevice sensor_misc = {
 	.name = "sensor_ultrasound",
 	.minor = MISC_DYNAMIC_MINOR,
 };
-
-
 
 static int __init audio_sensor_init(void)
 {

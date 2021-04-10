@@ -51,8 +51,11 @@
 #include "sn1xx.h"
 #include "pn8xt.h"
 
+<<<<<<< HEAD
 #include <linux/project_info.h>
 
+=======
+>>>>>>> a62deebe8637 (treewide: add cleaned-up vendor drivers)
 #define MAX_BUFFER_SIZE         (512)
 #define WAKEUP_SRC_TIMEOUT      (5000)
 #define MAX_RETRY_COUNT          3
@@ -675,6 +678,7 @@ static void check_hw_info(struct nfc_dev *nfc_dev) {
         hw_info.len = ret;
         pr_info("%s :Hardware Version  : %d\n", __func__,hw_info.data[3]);
 
+<<<<<<< HEAD
         switch (hw_info.data[3]) {
         case NFCC_NQ_210:
             push_component_info(NFC, "NQ210", "NXP");
@@ -699,6 +703,8 @@ static void check_hw_info(struct nfc_dev *nfc_dev) {
             break;
         }
 
+=======
+>>>>>>> a62deebe8637 (treewide: add cleaned-up vendor drivers)
     } else {
         pr_err("%s :Read Failed\n", __func__);
     }
