@@ -5930,11 +5930,16 @@ static int sde_crtc_onscreenfinger_atomic_check(struct sde_crtc_state *cstate,
 		cstate->fingerprint_dim_layer = NULL;
 		cstate->fingerprint_pressed = false;
 		cstate->fingerprint_mode = false;
+		for (i = 0; i < cnt; i++) {
+			if (pstates[i].sde_pstate->property_values[PLANE_PROP_ALPHA].value == 0)
+				SDE_DEBUG("pstates PLANE_PROP_ALPHA value is 0\n");
+		}
     }
-
 	if (fp_mode == 1 && !oneplus_dimlayer_hbm_enable) {
+		cstate->fingerprint_dim_layer = NULL;
 		cstate->fingerprint_mode = true;
-		cstate->fingerprint_pressed = true;
+		//cstate->fingerprint_pressed = true;
+		return 0;
 	}
 
 	return 0;
