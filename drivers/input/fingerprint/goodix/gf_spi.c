@@ -14,9 +14,6 @@
  */
 #define pr_fmt(fmt)		KBUILD_MODNAME ": " fmt
 
-#define CONFIG_MSM_RDM_NOTIFY
-#undef CONFIG_FB
-
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/ioctl.h>
@@ -41,7 +38,7 @@
 #include <linux/of_gpio.h>
 #include <linux/timer.h>
 #include <linux/notifier.h>
-#include <linux/fb.h>
+#include <linux/msm_drm_notify.h>
 #include <linux/pm_qos.h>
 #include <linux/cpufreq.h>
 //#include <linux/wakelock.h>
