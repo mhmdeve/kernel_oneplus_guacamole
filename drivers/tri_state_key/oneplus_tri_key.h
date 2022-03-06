@@ -19,7 +19,7 @@
 typedef enum debug_level {
 	LEVEL_BASIC,
 	LEVEL_DEBUG,
-}tri_key_debug_level;
+} tri_key_debug_level;
 
 enum dhall_id {
 	DHALL_0 = 0,

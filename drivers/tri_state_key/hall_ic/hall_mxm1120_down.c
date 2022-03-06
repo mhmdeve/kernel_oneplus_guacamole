@@ -329,10 +329,6 @@ static short m1120_2byte_to_short(m1120_data_t* m1120_data, u8 hbyte, u8 lbyte)
 }
 
 /***********************************************************/
-
-
-
-/***********************************************************/
 /*vdd / vid power control*/
 /***********************************************************/
 static int m1120_set_power(struct device *dev, bool on)
@@ -342,7 +338,6 @@ static int m1120_set_power(struct device *dev, bool on)
 	return 0;
 }
 /***********************************************************/
-
 
 static irqreturn_t m1120_down_irq_handler(int irq, void *dev_id)
 {
@@ -360,7 +355,6 @@ static irqreturn_t m1120_down_irq_handler(int irq, void *dev_id)
 	return IRQ_HANDLED;
 }
 
-
 static int m1120_get_enable(struct device *dev)
 {
 	struct i2c_client *client = to_i2c_client(dev);
@@ -368,7 +362,6 @@ static int m1120_get_enable(struct device *dev)
 
 	return atomic_read(&p_data->atm.enable);
 }
-
 
 static void m1120_set_enable(struct device *dev, int enable)
 {
@@ -596,7 +589,6 @@ static int m1120_reset_device(struct device *dev)
 	//     mxerr(&client->dev, "m1120_set_detection_mode was failed(%d)", err);
 	//     return err;
 	// }
-
 
 	/*(5) set power-on mode*/
 	err = m1120_set_operation_mode(dev, OPERATION_MODE_MEASUREMENT);
@@ -1023,7 +1015,7 @@ static int m1120_enable_irq(bool enable)
 	return 0;
 }
 
-static int m1120_clear_irq(void)
+static int m1120_clear_irq()
 {
 	printk(KERN_INFO "  %s", __func__);
 	if(p_m1120_data == NULL) {
@@ -1035,7 +1027,7 @@ static int m1120_clear_irq(void)
 	return 0;
 }
 
-static int m1120_get_irq_state(void)
+static int m1120_get_irq_state()
 {
 	printk(KERN_INFO "  %s", __func__);
 	if(p_m1120_data == NULL) {
@@ -1114,7 +1106,7 @@ static void m1120_dump_reg(u8* buf)
 	return;
 }
 
-static bool m1120_is_power_on(void)
+static bool m1120_is_power_on()
 {
 	printk(KERN_INFO "  %s", __func__);
 	if (p_m1120_data == NULL) {
@@ -1344,7 +1336,7 @@ static int tri_key_m1120_i2c_drv_probe(struct i2c_client *client, const struct i
 	// }
 
 	/*(11) register ops to abstrace level*/
-	oneplus_register_hall("hall_down", &m1120_downs_ops);//ÍùÆäÀï±ß×¢²áhall
+	oneplus_register_hall("hall_down", &m1120_downs_ops);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½hall
 
 	printk(KERN_INFO "  i2c addr : %d\n", client->addr);
 

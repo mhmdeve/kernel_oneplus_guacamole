@@ -38,13 +38,13 @@
  *	pin2 connect to pin5	1	            1         | Do Not Disturb
  *	pin4 connect to pin3	1	            0         | Normal
  */
-enum  {
+enum {
 	MODE_UNKNOWN,
 	MODE_MUTE,
 	MODE_DO_NOT_DISTURB,
 	MODE_NORMAL,
 	MODE_MAX_NUM
-	} tri_mode_t;
+} tri_mode_t;
 
 static const unsigned int tristate_extcon_tab[] = {
 	MODE_MUTE,
@@ -70,7 +70,6 @@ struct extcon_dev_data {
 	struct timer_list s_timer;
 	struct pinctrl *key_pinctrl;
 	struct pinctrl_state *set_state;
-
 };
 
 static struct extcon_dev_data *extcon_data;
@@ -162,7 +161,6 @@ static void extcon_dev_work(struct work_struct *work)
 	}
 }
 
-
 static irqreturn_t extcon_dev_interrupt(int irq, void *_dev)
 {
 	schedule_work(&extcon_data->work);
@@ -204,8 +202,7 @@ static int extcon_dev_get_devtree_pdata(struct device *dev)
 	return 0;
 }
 #else
-static inline int
-extcon_dev_get_devtree_pdata(struct device *dev)
+static inline int extcon_dev_get_devtree_pdata(struct device *dev)
 {
 	KEY_LOG("inline function\n");
 	return 0;
@@ -224,7 +221,6 @@ static int tristate_dev_probe(struct platform_device *pdev)
 		return -ENOMEM;
 
 	extcon_data->dev = dev;
-
 
 	extcon_data->key_pinctrl = devm_pinctrl_get(extcon_data->dev);
 
@@ -246,7 +242,6 @@ static int tristate_dev_probe(struct platform_device *pdev)
 		KEY_LOG("parse device tree fail!!!\n");
 		goto err_extcon_dev_register;
 	}
-
 
 	/* extcon registration */
 	extcon_data->edev =
@@ -359,6 +354,7 @@ static int tristate_dev_remove(struct platform_device *pdev)
 
 	return 0;
 }
+
 #ifdef CONFIG_OF
 static const struct of_device_id tristate_dev_of_match[] = {
 	{ .compatible = "oneplus, tri-state-key", },
@@ -376,6 +372,7 @@ static struct platform_driver tristate_dev_driver = {
 		.of_match_table = tristate_dev_of_match,
 	},
 };
+
 static int __init oem_tristate_init(void)
 {
 	return platform_driver_register(&tristate_dev_driver);
@@ -389,4 +386,3 @@ static void __exit oem_tristate_exit(void)
 module_exit(oem_tristate_exit);
 MODULE_DESCRIPTION("oem tri_state_key driver");
 MODULE_LICENSE("GPL v2");
-

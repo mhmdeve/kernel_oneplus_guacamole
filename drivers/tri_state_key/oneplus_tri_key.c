@@ -64,14 +64,14 @@ enum {
 	MODE_DO_NOT_DISTURB,
 	MODE_NORMAL,
 	MODE_MAX_NUM
-	} tri_mode;
+} tri_mode;
 
 
 unsigned int tristate_extcon_tab[] = {
 		MODE_MUTE,
 		MODE_DO_NOT_DISTURB,
 		MODE_NORMAL,
-	};
+};
 
 static struct hrtimer tri_key_timer;
 struct work_struct tri_key_timeout_work;
@@ -97,9 +97,6 @@ static short calib_UpValueMin = 0, calib_MdValueMin = 0, calib_DnValueMin = 0;
 static short calib_dnHall_UM_distance = 0, calib_dnHall_MD_distance = 0;
 static short calib_upHall_UM_distance = 0, calib_upHall_MD_distance = 0;
 static short calib_upHall_UD_distance = 0, calib_dnHall_UD_distance = 0;
-
-
-
 
 int oneplus_register_hall(const char *name, struct dhall_operations *ops)
 {
@@ -230,7 +227,6 @@ int oneplus_hall_get_data(unsigned int id)
 		TRI_KEY_ERR("id : %d is not correct\n", id);
 		return -EINVAL;
 	}
-
 }
 
 bool oneplus_hall_update_threshold(unsigned int id, int position, short lowthd, short highthd)
@@ -255,7 +251,6 @@ bool oneplus_hall_update_threshold(unsigned int id, int position, short lowthd, 
 		TRI_KEY_ERR("id : %d is not correct\n", id);
 		return -EINVAL;
 	}
-
 }
 
 int oneplus_hall_set_detection_mode(unsigned int id, u8 mode)
@@ -280,7 +275,6 @@ int oneplus_hall_set_detection_mode(unsigned int id, u8 mode)
 		TRI_KEY_ERR("id : %d is not correct\n", id);
 		return -EINVAL;
 	}
-
 }
 
 int oneplus_hall_get_irq_state(unsigned int id)
@@ -305,10 +299,7 @@ int oneplus_hall_get_irq_state(unsigned int id)
 		TRI_KEY_ERR("id : %d is not correct\n", id);
 		return -EINVAL;
 	}
-
 }
-
-
 
 void oneplus_hall_dump_regs(unsigned int id, u8 *buf)
 {
@@ -358,7 +349,6 @@ int oneplus_hall_set_reg(unsigned int id, int reg, int val)
 		TRI_KEY_ERR("id : %d is not correct\n", id);
 		return -EINVAL;
 	}
-
 }
 
 bool oneplus_hall_is_power_on(void)
@@ -372,8 +362,8 @@ bool oneplus_hall_is_power_on(void)
 		else
 			return false;
 	}
-
 }
+
 static void reboot_get_position(struct extcon_dev_data *chip)
 {
 	short delta;
@@ -441,7 +431,6 @@ static int interf_get_position(struct extcon_dev_data *chip)
 			return MID_STATE;
 			}
 	return -EINVAL;
-
 }
 
 static int get_position(struct extcon_dev_data *chip)
@@ -693,8 +682,6 @@ static int judge_interference(struct extcon_dev_data *chip)
 	return -EINVAL;
 }
 
-
-
 static int oneplus_get_data(struct extcon_dev_data *chip)
 {
 	int res = 0;
@@ -877,7 +864,6 @@ int oneplus_hall_irq_handler(unsigned int id)
 	}
 	return IRQ_HANDLED;
 }
-
 
 static void tri_key_dev_work(struct work_struct *work)
 {
@@ -1082,7 +1068,6 @@ static ssize_t dhall_data_show(struct device *dev,
 		sys_close(fd);
 	}
 */
-
 	return snprintf(buf, PAGE_SIZE, "%d, %d\n",
 		g_the_chip->dhall_data0, g_the_chip->dhall_data1);
 }
@@ -1132,13 +1117,13 @@ static void tri_key_timeout_work_func(struct work_struct *work)
 	return;
 }
 
-
 static short Sum(short value0, short value1)
 {
     short sum = 0;
 	sum = value0 + value1;
 	return sum;
 }
+
 static short Minus(short value0, short value1)
 {
 	short minus = 0;
@@ -1163,7 +1148,6 @@ void initialCalibValue(short calib_dnHall_UpV, short calib_dnHall_MdV,
 	calib_upHall_UD_distance = Minus(calib_upHall_UpV, calib_upHall_DnV);
 	calib_dnHall_UD_distance = Minus(calib_dnHall_UpV, calib_dnHall_DnV);
 }
-
 
 static ssize_t hall_data_calib_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
@@ -1208,6 +1192,7 @@ static ssize_t hall_data_calib_store(struct device *pdev,
 	report_calibration_location(g_the_chip);
 	return count;
 }
+
 static ssize_t hall_dump_regs_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
 {
@@ -1221,6 +1206,7 @@ static ssize_t hall_dump_regs_show(struct device *dev,
 	oneplus_hall_dump_regs(1, _buf);
 	return sprintf(buf, "%s\n %s\n", _buf);
 }
+
 static ssize_t hall_debug_info_store(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
 {
 	int tmp = 0;
@@ -1237,6 +1223,7 @@ static ssize_t hall_debug_info_store(struct device *dev, struct device_attribute
 
 	return count;
 }
+
 static ssize_t hall_debug_info_show(struct device *dev, struct device_attribute *attr, char *buf)
 {
 	return snprintf(buf, PAGE_SIZE, "%d\n", tri_key_debug);
@@ -1282,7 +1269,6 @@ static struct attribute *tri_key_attributes[] = {
 	&dev_attr_hall_set_value.attr,
 	NULL
 };
-
 
 static struct attribute_group tri_key_attribute_group = {
 	.attrs = tri_key_attributes
@@ -1433,4 +1419,3 @@ static void __exit tri_key_platform_exit(void)
 module_exit(tri_key_platform_exit);
 MODULE_DESCRIPTION("oem tri_state_key driver");
 MODULE_LICENSE("GPL v2");
-

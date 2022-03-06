@@ -13,7 +13,6 @@
 #define IST8801_DRIVER_VERSION				"Ver1.00-190222"
 /* ********************************************************* */
 
-
 /*
 SAD1 SAD0 == 00  0001100 R/W   (7bits)0x0C	(8bits)0x18
 SAD1 SAD0 == 01  0001101 R/W   (7bits)0x0D	(8bits)0x1A
