@@ -38,6 +38,8 @@
 #include <linux/of_gpio.h>
 #include <linux/timer.h>
 #include <linux/notifier.h>
+#include <linux/cpu_input_boost.h>
+#include <linux/devfreq_boost.h>
 #include <linux/msm_drm_notify.h>
 #include <linux/pm_qos.h>
 #include <linux/cpufreq.h>
@@ -693,6 +695,8 @@ int gf_opticalfp_irq_handler(int event)
 		return 0;
 	}
 	if (event == 1) {
+		cpu_input_boost_kick_max(1000);
+         	devfreq_boost_kick_max(DEVFREQ_CPU_LLCC_DDR_BW, 1000);
 		msg = GF_NET_EVENT_TP_TOUCHDOWN;
 		sendnlmsg(&msg);
 	} else if (event == 0) {
