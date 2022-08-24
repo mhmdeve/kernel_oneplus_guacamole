@@ -9,6 +9,7 @@
 #include <linux/once.h>
 
 #include <uapi/linux/random.h>
+#include <linux/random.h>
 
 struct notifier_block;
 
